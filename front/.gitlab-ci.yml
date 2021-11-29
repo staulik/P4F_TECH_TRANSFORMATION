@@ -1,0 +1,22 @@
+before_script: 
+  - chmod +x alpine.sh
+  - ./alpine.sh
+  - gem install bundler --no-document
+  - apk add --no-cache tzdata
+  - cp /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+  - echo "America/Sao_Paulo" >  /etc/timezone
+
+image: ruby:alpine
+
+variables:
+  TZ: America/Sao_Paulo
+  LANG: pt_BR.UTF-8
+  LANGUAGE: pt_BR.UTF-8
+  LC_ALL: pt_BR.UTF-8
+
+test:
+  stage: test
+  script:
+  - bundle install
+  - bundle exec cucumber
+  
