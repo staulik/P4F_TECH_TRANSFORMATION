@@ -30,7 +30,7 @@ class CriaScreenLogin < SitePrism::Page
       btn_sign.highlight
       btn_sign.click 
    end
-
+   
     def user_existente
       execute_script "window.scrollBy(0,300)"
       wait_until_input_email_visible
